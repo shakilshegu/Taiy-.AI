@@ -1,15 +1,14 @@
-export interface CovidData {
-    dates: string[];
-    cases: number[];
-    countries: CountryData[];
-  }
-  
-  export interface CountryData {
-    country: string;
-    lat: number;
-    long: number;
-    active: number;
-    recovered: number;
-    deaths: number;
-  }
-  
+
+export interface Country {
+  country: string;
+  countryInfo: {
+    iso2: string;
+    lat?: number;
+    long?: number;
+    flag: string;
+  };
+  cases: number;
+  deaths: number;
+  recovered: number;
+  active: number;
+}

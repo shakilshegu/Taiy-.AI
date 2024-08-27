@@ -11,7 +11,8 @@ const App: React.FC = () => {
       <Layout>
         <Routes>
           <Route path='/' element={<ContactsPage />} />
-          <Route path='/dashboard' element={<DashboardPage />} />
+          <Route path='/dashboard' element={<DashboardPage />} />{/* Default route for dashboard */}
+          <Route path='/dashboard/:section' element={<DashboardPage />} />
         </Routes>
       </Layout>
     </Router>
