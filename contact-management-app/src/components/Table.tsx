@@ -21,11 +21,11 @@ const Table: React.FC = () => {
   return (
     <div className="overflow-x-auto">
       <h2 className="text-2xl font-bold mb-4">World Total Cases</h2>
-      <table className="min-w-full bg-white border border-gray-200">
-        <thead>
+      <table className="min-w-full bg-white border border-gray-200 divide-y divide-gray-300">
+        <thead className="bg-gray-100">
           <tr>
-            <th className="py-2 px-4 border-b">Metric</th>
-            <th className="py-2 px-4 border-b">Value</th>
+            <th className="py-2 px-4 border-b text-left">Metric</th>
+            <th className="py-2 px-4 border-b text-left">Value</th>
           </tr>
         </thead>
         <tbody>

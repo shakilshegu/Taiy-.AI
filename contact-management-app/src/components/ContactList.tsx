@@ -1,60 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { deleteContact } from '../redux/contactsSlice';
-import ContactModal from './ContactModal';
 import { Contact } from '../types/contact';
 
-const ContactList: React.FC = () => {
-  // Ensure `contacts` is correctly typed as an array of Contact objects
+
+interface ContactListProps {
+  onEdit: (contact: Contact) => void;
+}
+
+const ContactList: React.FC<ContactListProps> = ({ onEdit }) => {
+  //* Ensure `contacts` is correctly typed as an array of Contact objects
   const contacts = useSelector((state: RootState) => state.contacts.contacts);
-  
   const dispatch = useDispatch();
-  const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   const handleDelete = (id: string) => {
     dispatch(deleteContact(id));
   };
 
-  const handleView = (contact: Contact) => {
-    setSelectedContact(contact);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedContact(null);
-  };
 
   return (
-    <div>
+    <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {contacts.map(contact => (
-        <div key={contact.id} className="mb-2 flex justify-between">
-          <div>
-            <p>{contact.firstName}</p>
-            <p>{contact.lastName}</p>
+        <div
+          key={contact.id}
+          className="bg-white shadow-lg rounded-lg border border-gray-200 p-4 flex flex-col items-center text-center"
+        >
+          <div className="mb-4  flex flex-col items-center">
+          <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mb-2">
+            <p className="text-xl font-semibold text-white">{contact.firstName.charAt(0)}{contact.lastName.charAt(0)}</p>
           </div>
-          <div>
-          <button 
-              className="btn btn-primary mr-2"
-              onClick={() => handleView(contact)}
+            <p className="text-xl font-semibold">{contact.firstName} {contact.lastName}</p>
+            <p className={`mt-1 text-lg font-semibold ${contact.status === 'active' ? 'text-green-500' : 'text-red-500'}`}>
+              {contact.status}
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 mb-4">
+            <button
+              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              onClick={() => onEdit(contact)}
             >
-              View
+              Edit
             </button>
-          <button 
-            className="btn btn-danger"
-            onClick={() => handleDelete(contact.id)}
-          >
-            Delete
-          </button>
-
+            <button
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+              onClick={() => handleDelete(contact.id)}
+            >
+              Delete
+            </button>
           </div>
         </div>
       ))}
-      {isModalOpen && selectedContact && (
-        <ContactModal contact={selectedContact} onClose={handleCloseModal} />
-      )}
     </div>
   );
 };
