@@ -1,15 +1,17 @@
 
 import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ContactsPage from './pages/ContactsPage';
+import DashboardPage from './pages/DashboardPage';
 
-function App() {
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-         <h1>Hello </h1>
-      </div>
-
-    </>
+    <Router>
+      <Routes>
+        <Route path='/' element={<ContactsPage />} />
+        <Route path='/dashboard' element={<DashboardPage />} />
+      </Routes>
+    </Router>
   )
 }
 
