@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { HistoricalData } from "../types/historicalData";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend,TooltipItem,ChartOptions   } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TooltipItem, ChartOptions } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend );
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 //* Fetch historical data from API
 const fetchHistoricalData = async (): Promise<HistoricalData> => {
@@ -54,11 +54,11 @@ const LineChart: React.FC = () => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'top',
       },
       tooltip: {
         callbacks: {
@@ -78,22 +78,16 @@ const LineChart: React.FC = () => {
       },
       y: {
         title: { display: true, text: 'Number of Cases' },
-        ticks: {
-          callback: function (value: number) {
-            return value.toLocaleString();
-          },
-        },
       },
     },
   };
 
   return (
     <div className="w-full p-4 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-center">COVID-19 Cases Over Time</h2>
-      <div className="h-[400px] md:h-[500px] lg:h-[600px]">
+      <div className="h-[400px] md:h-[500px] lg:h-[550px]">
         <Line data={chartData} options={options} />
       </div>
     </div>
   )
 }
-export default LineChart
+export default LineChart;

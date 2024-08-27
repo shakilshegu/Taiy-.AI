@@ -34,8 +34,8 @@ const MapView: React.FC = () => {
   return (
     <div className="w-full h-full">
       <h2 className="text-2xl font-bold mb-4 text-center">COVID-19 Cases by Country</h2>
-      <div className="w-full h-[calc(100vh-100px)]">
-        <MapContainer center={[20, 0]} zoom={2} style={{ height: '100%', width: '100%' }}>
+      <div className="z-1 w-full h-[calc(100vh-100px)]">
+        <MapContainer center={[20, 0]} zoom={2} style={{ height: '100%', width: '100%', zIndex: 1 }}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

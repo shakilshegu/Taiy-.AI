@@ -20,7 +20,7 @@ const Table: React.FC = () => {
 
   return (
     <div className="overflow-x-auto">
-      <h2 className="text-2xl font-bold mb-4">World Total Cases</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center">World Total Cases</h2>
       <table className="min-w-full bg-white border border-gray-200 divide-y divide-gray-300">
         <thead className="bg-gray-100">
           <tr>

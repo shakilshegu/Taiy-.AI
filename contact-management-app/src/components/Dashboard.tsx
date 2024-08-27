@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
       {section === 'country-cases' && <MapView />}
       {section === 'over-time' && (
         <div>
-          <h2 className="text-2xl font-bold mb-4">COVID-19 Cases Over Time</h2>
+          <h2 className="text-2xl font-bold mb-4 text-center">COVID-19 Cases Over Time</h2>
           <LineChart />
         </div>
       )}
