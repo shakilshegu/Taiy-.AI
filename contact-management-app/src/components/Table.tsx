@@ -15,7 +15,7 @@ const Table: React.FC = () => {
     queryFn: fetchGlobalData,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className='text-center'>Loading...</p>;
   if (error || !data) return <p>Error loading data</p>; 
 
   return (
