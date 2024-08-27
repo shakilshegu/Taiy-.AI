@@ -8,6 +8,8 @@ const Sidebar: React.FC = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  
   return (
     <div className="w-64 h-screen bg-gray-800 text-white p-4 overflow-y-auto md:relative fixed md:top-0 md:left-0 top-0 left-0 bottom-0">
       <ul>
